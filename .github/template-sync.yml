@@ -3,13 +3,21 @@
 # ----------------------------------------------- #
 
 additional:
-  # temporarily include repos manually # https://github.com/github/docs/issues/3630
-  - "template-*"
+  - "api-*"
+  - "node-*"
+  - "lib-*"
 
 files:
-  #  files to sync to other templates
-  - "!.github/workflows"
-  - "!README.md"
-  - "!.gitignore"
-  - "!**/dependabot.yml"
+  # files to ignore
+  - "!.env*"
+  - "!.github/workflows/*"
+  - "!**/package*.json"
   - "!**/template-sync.yml"
+  - "!README.*"
+  # files to force sync
+  - "**/LICENSE"
+  - ".dockerignore"
+  - .github/template/_push.yml: .github/workflows/push.yml
+  - .github/template/_pull_request.yml: .github/workflows/pull_request.yml
+  - .github/template/_pull_request_target.yml: .github/workflows/pull_request_target.yml
+  - .github/template/dependabot.yml: .github/dependabot.yml
