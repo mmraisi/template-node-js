@@ -22,12 +22,6 @@ Follow these steps to get your development environment set up:
     npm install
     ```
 
-2. Run linting:
-
-    ```bash
-    npm run lint
-    ```
-
 3. Run tests:
 
     ```bash

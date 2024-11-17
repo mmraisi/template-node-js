@@ -1,0 +1,47 @@
+name: npm-test
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        description: Node.js version
+        required: false
+        default: latest
+        type: string
+
+      os:
+        description: Operating System
+        required: false
+        default: ubuntu-latest
+        type: string
+
+      name:
+        description: Job Name
+        required: false
+        type: string
+
+jobs:
+  npm-test:
+    timeout-minutes: 5
+
+    name: ${{ inputs.name || format('test on node-{0} + {1}', inputs.node-version, inputs.os) || 'test-step' }}
+
+    runs-on: ${{ inputs.os }}
+
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          submodules: true
+
+      - uses: ahmadnassri/action-dotenv@v1.0.4
+
+      - uses: actions/setup-node@v4.1.0
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ github.token }}
+
+      - run: npm run test:ci
