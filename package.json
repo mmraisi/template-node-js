@@ -1,0 +1,37 @@
+{
+  "name": "template-node-js",
+  "version": "0.0.0-semantically-released",
+  "description": "template for nodejs projects",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "glob -c \"node --test\" 'test/unit/**/*.js'",
+    "test:unit:watch": "glob -c \"node --test --watch\" 'test/unit/**/*.js'",
+    "test:unit:100": "glob -c \"c8 --100 --reporter html --reporter text node --test\" 'test/unit/**/*.js'",
+    "test:integration": "glob -c \"node --test\" 'test/integration/**/*.js'",
+    "test:ci": "npm run test:unit:100 && npm run test:integration"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmraisi/template-node-js.git"
+  },
+  "keywords": [
+    "template",
+    "node"
+  ],
+  "author": "Mahmoud Mraisi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mmraisi/template-node-js/issues"
+  },
+  "homepage": "https://github.com/mmraisi/template-node-js#readme",
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "c8": "^9.1.0",
+    "glob": "^10.4.3"
+  }
+}

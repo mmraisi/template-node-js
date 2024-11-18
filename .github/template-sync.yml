@@ -17,7 +17,7 @@ files:
   # files to force sync
   - "**/LICENSE"
   - ".dockerignore"
-  - .github/template/_push.yml: .github/workflows/push.yml
-  - .github/template/_pull_request.yml: .github/workflows/pull_request.yml
-  - .github/template/_pull_request_target.yml: .github/workflows/pull_request_target.yml
+  - .github/template/push.yml: .github/workflows/push.yml
+  - .github/template/pull_request.yml: .github/workflows/pull_request.yml
+  - .github/template/pull_request_target.yml: .github/workflows/pull_request_target.yml
   - .github/template/dependabot.yml: .github/dependabot.yml

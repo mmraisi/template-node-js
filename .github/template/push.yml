@@ -1,5 +1,5 @@
 # ---------------------------------------------------- #
-# Note: this file originates in template-template #
+# Note: this file originates in template-node-js #
 # ---------------------------------------------------- #
 
 name: push
@@ -11,6 +11,10 @@ on:
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
 
+permissions:
+  contents: write
+  statuses: write
+  pull-requests: write
 
 jobs:
   metadata:
@@ -34,14 +38,6 @@ jobs:
     secrets: inherit
     with:
       name: npm-test
-
-  template-sync:
-    needs:
-      - metadata
-
-    if: ${{ needs.metadata.outputs.repository_default_branch == github.ref_name }}
-    uses: ./.github/workflows/job-template-sync.yml
-    secrets: inherit
 
   release:
     needs:

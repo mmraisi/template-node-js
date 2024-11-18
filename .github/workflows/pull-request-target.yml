@@ -14,14 +14,14 @@ jobs:
   auto-merge:
     # only run for dependabot PRs
     if: github.actor == 'dependabot[bot]'
-    uses: ./.github/workflows/_auto-merge.yml
+    uses: ./.github/workflows/job-auto-merge.yml
     secrets: inherit
 
   metadata:
-    uses: ./.github/workflows/_metadata.yml
+    uses: ./.github/workflows/job-metadata.yml
 
   template-sync:
     needs:
       - metadata
-    uses: ./.github/workflows/_template-sync.yml
+    uses: ./.github/workflows/job-template-sync.yml
     secrets: inherit
