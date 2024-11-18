@@ -15,6 +15,9 @@ jobs:
     # only run for dependabot PRs
     if: github.actor == 'dependabot[bot]'
     uses: ./.github/workflows/job-auto-merge.yml
+    permissions:
+      contents: write
+      pull-requests: write
     secrets: inherit
 
   metadata:
