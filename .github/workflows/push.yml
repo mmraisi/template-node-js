@@ -8,6 +8,11 @@ on:
   - push
   - workflow_dispatch
 
+permissions:
+  contents: write
+  statuses: write
+  pull-requests: write
+
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
 
@@ -21,10 +26,6 @@ jobs:
 
   lint-content:
     uses: ./.github/workflows/job-lint-javascript.yml
-    permissions:
-      contents: write
-      statuses: write
-      pull-requests: write
 
   npm-audit:
     uses: ./.github/workflows/job-npm-audit.yml
